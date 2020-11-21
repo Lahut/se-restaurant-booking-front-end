@@ -9,6 +9,8 @@ const NavbarComponent = () => {
 
     const Logout = (e) => {
         localStorage.removeItem("Token")
+        
+        history.push('/login')
         window.location.reload()
     }
 
