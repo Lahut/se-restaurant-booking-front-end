@@ -49,6 +49,13 @@ const Booking = () => {
             }else{
                 swal(`ทำการจองสำเร็จ!`, `รหัสที่นั่ง : ${doc.data}`, 
                 "success");
+                SetFormData({
+                    name : '',
+                    tel:'',
+                    time:'',
+                    location:'',
+                    seat:0
+                })
             }
             
         })
