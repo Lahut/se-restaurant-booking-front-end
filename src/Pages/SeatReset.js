@@ -43,9 +43,8 @@ const SeatReset = () => {
             
             axios.post('http://localhost:8071/resetallseat')
             .then(() => {
-                  swal("RESET SUCCESSFULLY.", {
-                    icon: "success",
-                  });
+              loadTable();
+              window.location.reload()
             })
             
             } else {
@@ -55,16 +54,28 @@ const SeatReset = () => {
     }
 
     const onDeleteTicket = (ticketId) => {
+      swal({
+        title: `ต้องการที่จะลบ ${ticketId} ใช่หรือไม่`,
+        text: "เมื่อลบแล้วข้อมูลจะหายไปจากระบบไม่สามารถย้อนกลับได้",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          axios.post(`http://localhost:8071/deleteTicket/${ticketId}`)
+          .then((doc) => {
+            swal(doc.data,"","success").then(() => loadTable())
+          }).catch((err) => {
+            console.log(err)
+          })
+        } else {
+          
+        }
+      });
       
 
-      axios.post(`http://localhost:8071/deleteTicket/${ticketId}`)
-      .then((doc) => {
-        swal(doc.data,"","success").then(() => loadTable())
-        
-
-      }).catch((err) => {
-        console.log(err)
-      })
+      
     }
 
     const StyledTableCell = withStyles((theme) => ({
