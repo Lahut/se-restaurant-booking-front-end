@@ -92,7 +92,7 @@ const Booking = () => {
                                 id="standard-basic"
                                 required id="standard-required" 
                                 label="เบอร์โทรศัพท์" 
-                                type="number"
+                                type="text"
                                 name="tel"
                                 value={formData.tel}
                                 onChange={ (e) => onChangeForms(e)}/>
