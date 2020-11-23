@@ -103,7 +103,7 @@ const SeatReset = () => {
     
     const classes = useStyles();
     
-    
+    if(!localStorage.getItem("Token")) return <h1>กรุณา login เพื่อเข้าสู่ระบบadmin</h1>
     return (
         <div>
             <Button onClick={(e) => onClickReset(e)} variant="contained" color="secondary" >RESET</Button>
